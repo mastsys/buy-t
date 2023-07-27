@@ -29,7 +29,7 @@ const PropertyList = () => {
             <Header />
             <VStack spacing={2} mt="10" align="center">
                 <Heading as="h1" size="xl">
-                    Nos biens à tokeniser
+                    Marketplace
                 </Heading>
                 {properties.map((property) => (
                     <Flex direction={{ base: 'column', md: 'row' }} key={property._id} p={5} shadow="md" borderWidth="1px" w="100%">
@@ -38,16 +38,19 @@ const PropertyList = () => {
                         </Box>
                         <VStack spacing={4} align="start" ml={{ md: '10' }}>
                             <Heading as="h1" size="lg">
-                                {property.title}
+                                {property.SCI}
                             </Heading>
                             <Text mt={2}>{property.city}</Text>
+                            <Text>{property.postalCode}</Text>
                             <Text>{`Surface : ${property.area} m²`}</Text>
+                            <Text>Prix au mètre carré : {property.pricePerSquareMeter} €</Text>
                             <Text>{`Prix total : ${property.initialValue} €`}</Text>
-                            <Link href={`/property/${property._id}`}>
+
+                            {/* <Link href={`/property/${property._id}`}>
                                 <Button colorScheme="blue">
                                     Voir plus
                                 </Button>
-                            </Link>
+                            </Link> */}
                         </VStack>
                     </Flex>
                 ))}

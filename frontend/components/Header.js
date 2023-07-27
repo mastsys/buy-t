@@ -48,13 +48,16 @@ const Header = () => {
   return (
     <Box bg="transparent" w="100%" p={4} color="blue.900" borderBottom="1px solid" borderColor="blue.900">
       <Flex justifyContent="space-between" alignItems="center">
-        <Box fontSize="xl" fontWeight="bold">Buy T</Box>
+        <Box onClick={() => router.push('/')} cursor="pointer" display="flex" alignItems="center">
+          <Image src="/home.png" alt="Home" boxSize="24px" mr={2} />
+          <Box fontSize="xl" fontWeight="bold">Buy T</Box>
+        </Box>
+        {/* <Button colorScheme="blue" variant="" onClick={() => router.push('/list')}>Marketplace</Button> */}
         {session ? (
-          // <Button colorScheme="blue" variant="solid" onClick={() => signOut({ redirect: '/' })}>Déconnexion</Button>
-        <Button colorScheme="blue" variant="transparent" onClick={() => router.push('/profile')}>
-          <Image src="/user.png" alt="Profil" boxSize="24px" />
-        </Button>
-          ) : (
+          <Button colorScheme="blue" variant="transparent" onClick={() => router.push('/profile')}>
+            <Image src="/user.png" alt="Profil" boxSize="24px" />
+          </Button>
+        ) : (
           <Button colorScheme="blue" onClick={onOpen} variant="solid">
             Connexion
           </Button>

@@ -14,6 +14,14 @@ import Footer from '../components/Footer';
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
+import { ethers } from "ethers";
+import PropertyTokenABI from "../PropertyTokenABI.json";
+
+
+const contractAddress = "0xecB436F954ed6EFFb3809CC2067390EE84B87fF8";
+//const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+
+
 const ProfilePage = () => {
 
   const router = useRouter();
@@ -34,6 +42,22 @@ const ProfilePage = () => {
       setConnectedWallet(true)
   }
   
+  async function callGetOwnerAddress() {
+    try {
+
+      alert(provider);
+
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const contract = new ethers.Contract(contractAddress, PropertyTokenABI, provider);
+      const ownerAddress = await contract.getOwnerAddress();
+  
+      alert(`Adresse du propriétaire : ${ownerAddress}`);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
   
   const connectWallet = async () => {
     try {
@@ -80,6 +104,9 @@ const ProfilePage = () => {
     Connecter Wallet
   </Button>
 )}
+
+<button onClick={callGetOwnerAddress}>Obtenir l'adresse du propriétaire</button>;
+
             <Link href="/list">Liste</Link>
             <Button colorScheme="red">
               Déconnexion

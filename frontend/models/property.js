@@ -25,6 +25,10 @@ const propertySchema = new mongoose.Schema({
         type: Number,
         default: null,
     },
+    totalTokens: {  
+        type: Number,
+        default: null,
+    },
     city: {  
         type: String,
         required: [true, "Please specify the city of the property"],
@@ -42,16 +46,20 @@ const propertySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }],
-    isTransactionApproved: {  // Boolean to specify if the property is approved for transactions
+    isTransactionApproved: {
         type: Boolean,
-        default: false,  // Default is false
+        default: false, 
     },
     picture: {
         type: String,
         get: function() {
           return `${this._id}.png`;
         }
-    }
+    },
+    SCI: {
+        type: String,
+        required: [true, "Please specify the SCI of the property"],
+    },
 });
 
 export default mongoose.models.Property || mongoose.model('Property', propertySchema);

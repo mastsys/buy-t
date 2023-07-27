@@ -21,12 +21,19 @@ export default function Home() {
         <Text textAlign="center" mb={6}>
             Investissez ou accédez à la propriété grâce à la tokenisation de biens immobiliers via Buy-T
         </Text>
+        <Link href="/list">
+            <Button colorScheme="blue" variant="solid" size="lg">
+              Marketplace
+            </Button>
+          </Link>
         {!session && (
+          <Box minH="20" display="flex" color='blue.900' flexDirection="column" alignItems="center" justifyContent="center" p={4}>
           <Link href="/register">
             <Button colorScheme="blue" variant="solid" size="lg">
               Inscription
             </Button>
           </Link>
+           </Box>
         )}
       </Box>
       <Footer/>
