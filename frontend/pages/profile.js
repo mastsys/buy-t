@@ -52,7 +52,6 @@ const ProfilePage = () => {
         },
         body: JSON.stringify(data), 
       });
-      console.log("Update ===> ", updateProperty)
 
     } catch (error) {
       console.error(error);
@@ -72,7 +71,6 @@ const ProfilePage = () => {
         method: "eth_requestAccounts",
       });
 
-      console.log("Connected", accounts[0]);
       setConnectedAccount(accounts[0]);
     } catch (error) {
       console.log(error);

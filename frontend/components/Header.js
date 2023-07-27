@@ -29,7 +29,6 @@ const Header = () => {
   const passwordInputRef = useRef()
 
   useEffect(() => {
-    console.log("Session ===> ", session)
   }, [session]);
 
   async function submitHandler(event) {
